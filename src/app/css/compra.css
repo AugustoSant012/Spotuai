@@ -1,0 +1,42 @@
+/* assinaturaForm.css */
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+
+}
+
+.plan-text {
+    color: purple;
+    font-weight: bold;
+}
+
+.discount-text {
+    text-align: center;
+    color: purple;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+}
+
+.subscribe-link {
+    color: purple;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.subscribe-link:hover {
+    transform: scale(1.05);
+    color: darkviolet;
+}
+
+.card-container .card:hover {
+    transform: scale(1.009);
+    box-shadow: 0px 4px 10px rgba(133, 8, 150, 0.74);
+}
