@@ -34,19 +34,24 @@ export default function CompraForm() {
     };
 
     const handleNumeroCartaoChange = (e) => {
-        let value = e.target.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim();
+        let value = e.target.value.replace(/\D/g, '').slice(0, 16); // Limita a 16 dígitos
+        value = value.replace(/(.{4})/g, '$1 ').trim(); // Formata em blocos de 4 dígitos
         setNumeroCartao(value);
     };
-
+    
     const handleValidadeCartaoChange = (e) => {
-        let value = e.target.value.replace(/\D/g, '').replace(/(\d{2})(\d{2})/, '$1/$2').slice(0, 5);
+        let value = e.target.value.replace(/\D/g, '').slice(0, 4); // Limita a 4 dígitos numéricos
+        if (value.length >= 2) {
+            value = value.slice(0, 2) + '/' + value.slice(2); // Adiciona a barra (MM/AA)
+        }
         setValidadeCartao(value);
     };
-
+    
     const handleCvvChange = (e) => {
-        let value = e.target.value.replace(/\D/g, '').slice(0, 3);
+        let value = e.target.value.replace(/\D/g, '').slice(0, 3); // Limita a 3 dígitos
         setCvv(value);
     };
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();

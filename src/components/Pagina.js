@@ -14,6 +14,9 @@ export default function Pagina({ children }) { // Adiciona 'children' como prop
                 <Container>
                     <div className="navbar-content">
                         <div className="links-container">
+                        <Link href="/minha-playlist" passHref>
+                                <Nav.Link as="span" className="pini">Minha Playlist</Nav.Link>
+                            </Link>
                             <Link href="/musicas" passHref>
                                 <Nav.Link as="span" className="pini">Músicas</Nav.Link>
                             </Link>
