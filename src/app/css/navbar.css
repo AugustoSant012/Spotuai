@@ -5,13 +5,13 @@
 }
 
 .pini {
-    color: #ffffff;
+    color: #962db1;  /* Cor roxa para "Minha Playlist" */
     font-size: 1.2rem;
     padding: 0 15px;
 }
 
 .pini:hover {
-    color: #962db1;
+    color: #7b1d9e;  /* Cor roxa mais escura para hover */
     transform: scale(1.05);
 }
 
@@ -31,7 +31,7 @@
 
 .navbar-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Garante que o "Minha Playlist" e os ícones fiquem nas extremidades */
     align-items: center;
     width: 100%;
 }
@@ -39,14 +39,19 @@
 .links-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-grow: 1;
+    justify-content: flex-start; /* Alinha "Minha Playlist" à esquerda */
+}
+
+.navbar-logo {
+    display: flex;
+    justify-content: center; /* Centraliza o logo/ícone */
+    flex-grow: 1;  /* Faz o logo ocupar o máximo de espaço disponível */
 }
 
 .icons-container {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-end; /* Alinha os ícones à direita */
 }
 
 .links-container .pini {
@@ -75,4 +80,84 @@
     max-width: 100%;
     border: none;
     border-radius: 8px; /* Opção para bordas arredondadas */
+}
+
+/* Estilo da seção "Minha Playlist" */
+.my-playlist {
+    background-color: #000000;  /* Cor de fundo para se destacar */
+    color: white;
+    padding: 30px;
+    margin-top: 40px; /* Distância do conteúdo superior */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar a área */
+    text-align: center;
+    position: relative;
+}
+
+.my-playlist h2 {
+    color: #962db1; /* Cor do título */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.playlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.playlist-card {
+    background-color: #1d1d1d; /* Cor de fundo do cartão */
+    color: white;
+    width: 18rem;
+    margin: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra dos cartões */
+}
+
+.playlist-card img {
+    width: 100%;
+    height: 250px; /* Ajuste da altura da imagem */
+    object-fit: cover;
+}
+
+.playlist-card .card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.playlist-card .card-title {
+    font-size: 1.2rem;
+    color: #962db1; /* Cor do título do cartão */
+    margin-bottom: 10px;
+}
+
+.playlist-card .card-text {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.playlist-card button {
+    background-color: #962db1; /* Cor do botão */
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.playlist-card button:hover {
+    background-color: #7b1d9e; /* Cor do botão ao passar o mouse */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .playlist-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

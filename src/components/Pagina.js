@@ -14,24 +14,20 @@ export default function Pagina({ children }) { // Adiciona 'children' como prop
                 <Container>
                     <div className="navbar-content">
                         <div className="links-container">
-                        <Link href="/minha-playlist" passHref>
+                            <Link href="/playlist" passHref>
                                 <Nav.Link as="span" className="pini">Minha Playlist</Nav.Link>
                             </Link>
-                            <Link href="/musicas" passHref>
-                                <Nav.Link as="span" className="pini">Músicas</Nav.Link>
-                            </Link>
-                            <Navbar.Brand href="/spotuai">
-                                <img className='imgic'
-                                    src="https://icones.pro/wp-content/uploads/2021/04/logo-spotify-icone-png-violet.png"
-                                    width="50"
-                                    height="50"
-                                    alt="spotuai"
-                                />
-                            </Navbar.Brand>
-                            <Link href="/artistas" passHref>
-                                <Nav.Link as="span" className="pini">Artistas</Nav.Link>
-                            </Link>
                         </div>
+
+                        <Navbar.Brand href="/spotuai" className="navbar-logo">
+                            <img className='imgic'
+                                src="https://icones.pro/wp-content/uploads/2021/04/logo-spotify-icone-png-violet.png"
+                                width="50"
+                                height="50"
+                                alt="spotuai"
+                            />
+                        </Navbar.Brand>
+
                         <div className="icons-container">
                             <Link href="/login" passHref>
                                 <FaRegUser className="icon" />

@@ -1,10 +1,52 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Pagina from '@/components/Pagina';
 import '@/app/css/play.css';
-import { Card, ListGroup, Tab, Tabs } from 'react-bootstrap';
+import { Card, ListGroup, Button } from 'react-bootstrap';
+import { obterPlaylist } from '@/services/cadastrar-musica'; // Função para obter as músicas cadastradas
+import Link from 'next/link'; // Importando o Link do Next.js para navegação
 
 export default function Spotuai() {
+    const [playlist, setPlaylist] = useState([]);
+
+    // Carregar a playlist do localStorage
+    useEffect(() => {
+        const lista = obterPlaylist();
+        setPlaylist(lista);
+    }, []);
+
+    // Função para renderizar a playlist
+    const renderPlaylist = () => {
+        if (playlist.length === 0) {
+            return <p>Não há músicas na sua playlist.</p>;
+        }
+        return (
+            <div className="playlist-container">
+                {playlist.map((musica) => (
+                    <Link href={`/playlist?id=${musica.id}`} key={musica.id} passHref>
+                        <Card style={{ width: '18rem' }} className="playlist-card">
+                            <Card.Img variant="top" src={musica.foto} alt={musica.musica} />
+                            <Card.Body>
+                                <Card.Title>{musica.musica}</Card.Title>
+                                <Card.Text>{musica.cantor}</Card.Text>
+                                <Button variant="danger" onClick={() => handleDelete(musica.id)}>
+                                    Excluir
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                ))}
+            </div>
+        );
+    };
+
+    // Função para excluir música da playlist
+    const handleDelete = (id) => {
+        let updatedPlaylist = playlist.filter((musica) => musica.id !== id);
+        localStorage.setItem('playlist', JSON.stringify(updatedPlaylist));
+        setPlaylist(updatedPlaylist); // Atualiza o estado da playlist
+    };
+
     return (
         <Pagina>
             <br />
@@ -18,52 +60,58 @@ export default function Spotuai() {
             </div>
 
             <div className="iframe-container">
-                <iframe
-                    className="spotify-iframe"
-                    src="https://open.spotify.com/embed/track/3cVG7cfDxVLZmNOs17aWTF?utm_source=generator&theme=0"
-                    frameBorder="0"
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
-
+                {/* Spotify embeds */}
                 <iframe
                     className="spotify-iframe"
                     src="https://open.spotify.com/embed/track/5jaqPYoLJjfJT92vQ7WXha?utm_source=generator&theme=0"
+                    width="350"
+                    height="352"
                     frameBorder="0"
-                    allowFullScreen
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
-
+                    loading="lazy"
+                />
                 <iframe
                     className="spotify-iframe"
-                    src="https://open.spotify.com/embed/track/338horqJYhaeVjkiFXcVIh?utm_source=generator&theme=0"
+                    src="https://open.spotify.com/embed/track/59iiIkwDcLRqyUwwt4UgU1?utm_source=generator&theme=0"
+                    width="350"
+                    height="352"
                     frameBorder="0"
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
-
+                    loading="lazy"
+                />
                 <iframe
                     className="spotify-iframe"
-                    src="https://open.spotify.com/embed/track/4ES3qh8IU3tQfe4ZmZvWdi?utm_source=generator&theme=0"
+                    src="https://open.spotify.com/embed/track/5ZEyH3VBYL4QJA7ePtocdX?utm_source=generator&theme=0"
+                    width="350"
+                    height="352"
                     frameBorder="0"
-                    allowFullScreen
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy">
-                </iframe>
+                    loading="lazy"
+                />
+                <iframe
+                    className="spotify-iframe"
+                    src="https://open.spotify.com/embed/track/6pnQjZPabSrppBUozCFZdw?utm_source=generator&theme=0"
+                    width="350"
+                    height="352"
+                    frameBorder="0"
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                />
             </div>
 
-            <div className='promocaotext'>
+            <div className="promocaotext">
                 <h1 className="discount-text">Desconto de 50% em todo o mês de Novembro!</h1>
             </div>
 
+            {/* Cartões de planos */}
             <div className="card-container">
+                {/* Plano PRO */}
                 <Card style={{ width: '18rem' }} className="card">
                     <Card.Img variant="top" src="https://i.ibb.co/StT60bx/Brocasito-exclusivo-no-Spotuai.png" alt="Plano PRO" />
                     <Card.Body>
                         <Card.Title>Plano PRO</Card.Title>
                         <Card.Text className="plan-text">
-                            Aproveite milhões de músicas com acesso ilimitado e sem anúncios! O Plano PRO é perfeito para quem não quer interrupções.
+                            Aproveite milhões de músicas com acesso ilimitado e sem anúncios!
                         </Card.Text>
                     </Card.Body>
                     <ListGroup className="list-group-flush">
@@ -76,6 +124,7 @@ export default function Spotuai() {
                     </Card.Body>
                 </Card>
 
+                {/* Plano Family */}
                 <Card style={{ width: '18rem' }} className="card">
                     <Card.Img variant="top" src="https://i.ibb.co/sPrfvT9/Brocasito-exclusivo-no-Spotuai-1.png" alt="Plano Family" />
                     <Card.Body>
@@ -94,6 +143,7 @@ export default function Spotuai() {
                     </Card.Body>
                 </Card>
 
+                {/* Plano Duo */}
                 <Card style={{ width: '18rem' }} className="card">
                     <Card.Img variant="top" src="https://i.ibb.co/gvXC2r7/Brocasito-exclusivo-no-Spotuai-2.png" alt="Plano Duo" />
                     <Card.Body>
@@ -113,23 +163,11 @@ export default function Spotuai() {
                 </Card>
             </div>
 
-
-
-            <Tabs defaultActiveKey="home" id="uncontrolled-tab-example" className="mb-3">
-                <Tab eventKey="home" title="Minha Playlist">
-                    <div className="playlist">
-                        <iframe className="listspotfy" src="https://open.spotify.com/embed/track/0d16iGBlngyLHsldWzvahM?utm_source=generator&theme=0" loading="lazy"></iframe>
-                        <iframe className="listspotfy" src="https://open.spotify.com/embed/track/5CUH8hEmgqsfQ3jKTPJLdm?utm_source=generator&theme=0" loading="lazy"></iframe>
-                        <iframe className="listspotfy" src="https://open.spotify.com/embed/track/5aDlgmz3RSR2FP5SqZuuzs?utm_source=generator&theme=0" loading="lazy"></iframe>
-                    </div>
-                </Tab>
-                <Tab eventKey="profile" title="Profile">
-                    Tab content for Profile
-                </Tab>
-                <Tab eventKey="contact" title="Contact" disabled>
-                    Tab content for Contact
-                </Tab>
-            </Tabs>
+            {/* Exibindo as playlists cadastradas */}
+            <div className="my-playlist">
+                <h2>Minha Playlist</h2>
+                {renderPlaylist()}
+            </div>
         </Pagina>
     );
 }

@@ -1,29 +1,49 @@
+*{
+    background-color: black;
+}
 .playlist-container {
     padding: 20px;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column; /* Empilha os elementos verticalmente */
+    align-items: center; /* Centraliza os elementos horizontalmente */
 }
 
 .playlist-title {
     color: purple;
+    margin-bottom: 20px; /* Espaço entre o título e o botão */
 }
 
 .add-button {
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Aumenta o espaçamento abaixo do botão */
     background-color: purple;
     border: none;
+    transition: background-color 0.3s ease; /* Adiciona transição suave ao hover */
+}
+
+/* Alterando a cor de hover para roxo */
+.add-button:hover {
+    background-color: #6a1b9a; /* Cor roxa ao passar o mouse */
+}
+
+.semmusica {
+    margin-top: 20px; /* Espaço entre o botão e a mensagem "Nenhuma música na playlist" */
+    font-size: 1.2rem;
+    color: grey;
 }
 
 .cards-container {
+    margin-top: 30px; /* Espaço entre a mensagem "Nenhuma música" ou o botão e os cards */
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
+    flex-wrap: wrap; /* Faz os cards quebrarem para a linha de baixo */
+    gap: 20px; /* Espaço entre os cards */
+    justify-content: center; /* Centraliza os cards */
 }
 
 .music-card {
-    width: 200px;
+    width: 250px; /* Define uma largura consistente para os cards */
     background-color: #1e1e1e;
     color: white;
     border: 1px solid purple;
@@ -37,30 +57,61 @@
 
 .form-container {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto; /* Centraliza horizontalmente */
     background-color: black;
     padding: 20px;
     color: white;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Empilha os elementos do formulário */
+    align-items: center; /* Centraliza os campos e o botão */
+    justify-content: center; /* Garante que o conteúdo esteja centralizado verticalmente */
+    height: 100vh; /* Faz o formulário ocupar toda a altura da página */
 }
 
 .form-container h1 {
     color: purple;
     text-align: center;
+    margin-bottom: 20px; /* Espaço entre o título e os campos do formulário */
+}
+
+.form-group {
+    width: 100%; /* Faz os campos do formulário se expandirem */
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px; /* Espaço entre o label e o campo */
+}
+
+.form-group input {
+    width: 100%; /* Garante que os inputs ocupem toda a largura */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .button-group {
     display: flex;
-    justify-content: space-around;
-    margin-top: 15px;
+    justify-content: center; /* Centraliza os botões */
+    width: 100%; /* Garante que o grupo de botões ocupe toda a largura */
+    margin-top: 20px;
 }
 
-.button-group .btn-success {
+.button-group button {
+    width: 100%; /* Garante que o botão ocupe toda a largura do grupo */
+    padding: 10px;
     background-color: purple;
+    color: white;
     border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
-.button-group .btn-danger {
-    background-color: #ff3b3b;
-    border: none;
+/* Alterando a cor de hover para roxo */
+.button-group button:hover {
+    background-color: #6a1b9a; /* Cor roxa ao passar o mouse */
 }
